@@ -1,13 +1,23 @@
-<!doctype html>
+---
+import Noise from "../components/Noise.astro";
+---
+
+<!DOCTYPE HTML>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+		<title>Vitor Akiyama</title>
 	</head>
-	<body>
+	<body class="bg-[#464D77] min-h-dvh z-20 outfit-base">
+    <div class="fixed w-full h-dvh opacity-50 pointer-events-none">
+      <Noise />
+    </div>
 		<slot />
 	</body>
 </html>

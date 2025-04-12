@@ -1,12 +1,100 @@
 ---
 import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
+import Navigation from '../components/Navigation.astro';
+import Section from "../components/Section.astro";
+import Button from "../components/Button.astro";
+import Skill from "../components/Skill.astro";
+
+// images
+
+import TypeScript from "../assets/typescript.png";
+import React from "../assets/React.png";
+import tRPC from "../assets/tRPC.png";
+import Hono from "../assets/Hono.png";
+import Drizzle from "../assets/Drizzle.png";
+
+
+export type Skill = {
+  iconSrc: ImageMetadata; 
+  title: string,
+  href: string,
+}
+
+const skills: Skill[] = [
+  {
+    title: "TypeScript",
+    iconSrc: TypeScript,
+    href: "https://www.typescriptlang.org/"
+  },
+  {
+    title: "React",
+    iconSrc: React,
+    href: "https://react.dev/"
+  },
+  {
+    title: "tRPC",
+    iconSrc: tRPC,
+    href: "https://trpc.io/"
+  },
+  {
+    title: "Hono",
+    iconSrc: Hono,
+    href: "https://hono.dev/"
+  },
+  {
+    title: "DrizzleORM",
+    iconSrc: Drizzle,
+    href: "https://orm.drizzle.team/"
+  },
+]
+
 ---
 
 <Layout>
-<main class="border-black border-4 p-4 rounded">
-  <h1 class="text-3xl font-bold ">
-    Hello World
-  </h1>
+<Navigation />
+<main class="p-4 rounded flex flex-col gap-10 items-center">
+  <div class="flex flex-col justify-center items-center w-full max-w-[800px]">
+    <div class="text-[#1a1d30] lg:text-3xl text-2xl cursor-hover flex flex-col items-center justify-center bg-[#FAFAFA] rounded-full w-[80%] max-w-[400px] aspect-square overflow-hidden bg-linear-180 from-[#FAFAFA] to-100% to-[#464D77]">
+    <div class="absolute lg:w-[120%] w-[120%] lg:h-[400%] h-[100%] border border-white/10 rounded-full top-[30%] -z-10" style="clip-path: inset(0 0 50% 0);"/>
+      <h1 class="text-[#1a1d30] drop-shadow-md drop-shadow-black/30">
+        <b>Vitor Akiyama</b>
+      </h1>
+      <h2 class="font-bold text-xl drop-shadow-md drop-shadow-black/30">Software Developer</h2>
+      <p class="text-base mt-4 drop-shadow-md drop-shadow-black/30">Based in Vancouver <span class="mx-1 relative top-0.5">·</span> Web Focused</p>
+    </div>
+    <div class="py-4 flex gap-4 flex-col w-[90%] mt-4 text-[#FAFAFA] lg:text-lg">
+      <p>
+      I believe that technology has <b>limitless potential</b> to enrich and empower our lives.
+      </p>
+      <p>
+       Inspired by this belief, I'm committed to crafting <b>people-focused</b>, ethical digital experiences that leave a lasting impression.
+      </p>
+      <p>
+      I fulfill this commitment by building high-quality, seamless web applications with a <b>laser-sharp focus on usability.</b>
+      </p>
+      <div class="mt-4">
+        <Button>
+          See My Projects ↓
+        </Button>
+      </div>
+    </div>
+  </div>
+  <Section>
+    <h2 class="text-3xl text-[#FAFAFA] font-bold">Skills</h2>
+    <div class="py-4 flex gap-4 flex-col w-[90%] text-[#FAFAFA] lg:text-lg">
+      <p>Mistakes happen, but they don’t have to reach the people using what I build.</p> 
+      <p>I rely on tools and technologies that protect users by making correctness a priority.</p>
+      <p>This means less bugs and more intentional user experiences.</p>
+    </div>
+    <div class="grid grid-cols-3 gap-10 w-full mt-4">
+      {skills.map(skill => <Skill skill={skill}/>)}
+    </div>
+  </Section>
+  <Section>
+    <h2 class="text-3xl text-[#FAFAFA] font-bold">
+      Projects
+    </h2>
+  </Section>
 </main>
 </Layout>

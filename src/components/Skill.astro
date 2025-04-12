@@ -1,0 +1,17 @@
+---
+import type { Skill } from "../pages/index.astro";
+import {
+Image
+} from "astro:assets";
+
+const props = Astro.props;
+
+const skill = props.skill as Skill;
+---
+
+<a href={skill.href} target="_blank">
+  <div class="text-[#FAFAFA] flex flex-col items-center hover:-translate-y-0.5 transition-transform">
+    <Image class="w-15 rounded" src={skill.iconSrc} alt={skill.title + " logo"}/>
+    <h3 class="text-bold text-lg">{skill.title}</h3>
+  </div>
+</a>
