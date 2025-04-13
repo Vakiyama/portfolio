@@ -1,17 +1,18 @@
 ---
 import type { Skill } from "../pages/index.astro";
-import {
-Image
-} from "astro:assets";
-
+import { Image } from "astro:assets";
 const props = Astro.props;
-
 const skill = props.skill as Skill;
 ---
-
-<a href={skill.href} target="_blank">
-  <div class="text-center text-off-white flex flex-col items-center hover:-translate-y-0.5 transition-transform rotate-[0.000001deg] gap-2">
-    <Image class="w-15 rounded" src={skill.iconSrc} alt={skill.title + " logo"}/>
-    <h3 class="text-bold text-lg">{skill.title}</h3>
+<a href={skill.href} target="_blank" class="group">
+  <div class="text-center text-off-white flex flex-col items-center hover:-translate-y-2 transition-all duration-300 ease-out p-4 rounded-lg bg-light-blue drop-shadow-black/10 drop-shadow-lg backdrop-blur-sm border border-white/10 hover:border-white/20 hover:bg-white/10 hover:shadow-lg hover:shadow-blue-500/10">
+    <div class="relative mb-3">
+      <div class="absolute -inset-2 bg-blue-500/20 rounded-full blur-lg opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
+      <Image class="w-16 h-16 rounded relative z-10 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3" src={skill.iconSrc} alt={skill.title + " logo"}/>
+    </div>
+    <h3 class="text-bold text-lg relative">
+      {skill.title}
+      <span class="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-off-white/80 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+    </h3>
   </div>
 </a>

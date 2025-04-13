@@ -12,3 +12,13 @@
   --color-light-blue: #464d77;
   --color-off-white: #fafafa;
 }
+
+.skill-item {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.animate-in {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}

@@ -31,6 +31,31 @@ import Noise from "../components/Noise.astro";
               behavior: 'smooth'
           });
       });
-  });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const skillItems = document.querySelectorAll('.skill-item');
+      const skillSection = document.querySelector("#skills"); 
+      
+      if (!skillSection) return; 
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            skillItems.forEach((item, index) => {
+              // @ts-ignore
+              item.style.transitionDelay = `${index * 100}ms`;
+              item.classList.add('animate-in');
+            });
+            
+            observer.unobserve(entry.target); 
+          }
+        });
+      }, { 
+        threshold: 0.1 
+      });
+      
+      observer.observe(skillSection);
+    });
   </script>
 </html>
