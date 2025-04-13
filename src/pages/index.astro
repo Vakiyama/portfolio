@@ -13,6 +13,7 @@ import React from "../assets/React.png";
 import tRPC from "../assets/tRPC.png";
 import Hono from "../assets/Hono.png";
 import Drizzle from "../assets/Drizzle.png";
+import Gleam from "../assets/gleam.png";
 
 
 export type Skill = {
@@ -47,6 +48,11 @@ const skills: Skill[] = [
     iconSrc: Drizzle,
     href: "https://orm.drizzle.team/"
   },
+  {
+  title: "Gleam",
+  iconSrc: Gleam,
+  href: "https://gleam.run/",
+  }
 ]
 
 ---
@@ -54,9 +60,11 @@ const skills: Skill[] = [
 <Layout>
 <Navigation />
 <main class="p-4 rounded flex flex-col gap-10 items-center">
-  <div class="flex flex-col justify-center items-center w-full max-w-[800px]">
+  <div class="flex flex-col justify-center items-center w-full max-w-[800px] overflow-hidden">
     <div class="text-[#1a1d30] lg:text-3xl text-2xl cursor-hover flex flex-col items-center justify-center bg-[#FAFAFA] rounded-full w-[80%] max-w-[400px] aspect-square overflow-hidden bg-linear-180 from-[#FAFAFA] to-100% to-[#464D77]">
-    <div class="absolute lg:w-[120%] w-[120%] lg:h-[400%] h-[100%] border border-white/10 rounded-full top-[30%] -z-10" style="clip-path: inset(0 0 50% 0);"/>
+    <div class="absolute overflow-hidden w-full h-full">
+      <div class="absolute lg:w-[120%] w-[120%] lg:h-[400%] h-[100%] border border-white/10 rounded-full top-[40%] lg:top-[30%] -z-10 -left-[10%]" style="clip-path: inset(0 0 50% 0);"/>
+    </div>
       <h1 class="text-[#1a1d30] drop-shadow-md drop-shadow-black/30">
         <b>Vitor Akiyama</b>
       </h1>
