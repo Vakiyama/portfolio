@@ -14,10 +14,23 @@ import Noise from "../components/Noise.astro";
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 		<title>Vitor Akiyama</title>
 	</head>
-	<body class="bg-[#464D77] min-h-dvh z-20 outfit-base relative">
+	<body class="bg-light-blue min-h-dvh z-20 outfit-base relative">
     <div class="fixed w-full h-lvh opacity-40 pointer-events-none z-20">
       <Noise />
     </div>
 		<slot />
 	</body>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          // @ts-ignore
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+              behavior: 'smooth'
+          });
+      });
+  });
+  </script>
 </html>

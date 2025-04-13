@@ -1,0 +1,10 @@
+---
+  
+const props = Astro.props;
+
+---
+
+<li class="font-bold cursor-pointer relative group">
+  <a href={props.href} class="relative">{props.title}</a>
+  <span class="text-off-white/80 rounded absolute bottom-0 left-1/2 w-0 h-0.5 bg-current transition-all duration-300 ease-out group-hover:w-full group-hover:left-0"></span>
+</li>

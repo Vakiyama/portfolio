@@ -5,24 +5,39 @@ import Navigation from '../components/Navigation.astro';
 import Section from "../components/Section.astro";
 import Button from "../components/Button.astro";
 import Skill from "../components/Skill.astro";
+import ProjectThumb from "../components/ProjectThumb.astro";
 
 // images
 
+  // skills
 import TypeScript from "../assets/typescript.png";
 import React from "../assets/React.png";
 import TRpc from "../assets/tRPC.png";
 import Hono from "../assets/Hono.png";
 import Drizzle from "../assets/Drizzle.png";
 import Gleam from "../assets/gleam.png";
-import Claude from "../assets/claude.png"
+import Anthropic from "../assets/anthropic.png"
 import Mcp from "../assets/mcp.png"
 import Solid from "../assets/solid.png"
+
+  // projects
+import Arkhet from "../assets/projects/arkhet.png";
+import Dmf from "../assets/projects/dmf.png";
+import FairShare from "../assets/projects/fairshare.png";
+import Harmony from "../assets/projects/Harmony.png";
+import Uplink from "../assets/projects/uplink.png"
 
 
 export type Skill = {
   iconSrc: ImageMetadata; 
   title: string,
   href: string,
+}
+
+export type Project = {
+  thumbSrc: ImageMetadata,
+  title: string,
+  description: string,
 }
 
 const skills: Skill[] = [
@@ -57,8 +72,8 @@ const skills: Skill[] = [
     href: "https://gleam.run/",
   },
   {
-    title: "Claude",
-    iconSrc: Claude,
+    title: "Anthropic API",
+    iconSrc: Anthropic,
     href: "https://www.anthropic.com/api",
   },
   {
@@ -73,23 +88,51 @@ const skills: Skill[] = [
   },
 ]
 
+const projects: Project[] = [
+  {
+    title: "Arkhet",
+    description: "Build, test and validate product ideas in record time.",
+    thumbSrc: Arkhet,
+  },
+  {
+    title: "Discover My Franchise",
+    description: "Simplify franchise sales with a single, efficient candidate management system.",
+    thumbSrc: Dmf,
+  },
+  {
+    title: "Harmony",
+    description: "Support your loved ones on an all in one, stress-free caretaking mobile app.",
+    thumbSrc: Harmony,
+  },
+  {
+    title: "FairShare",
+    description: "Share, track and split expenses with friends and family on a social finance platform.",
+    thumbSrc: FairShare,
+  },
+  {
+    title: "Uplink",
+    description: "Converse and collaborate with an AI chat bot directly from your terminal.",
+    thumbSrc: Uplink,
+  },
+]
+
 ---
 
 <Layout>
 <Navigation />
-<main class="p-4 rounded flex flex-col gap-8 items-center mt-4 sm:mx-10 mx-4">
+<main class="p-4 rounded flex flex-col gap-12 items-center mt-4 sm:mx-10 mx-4">
   <div class="text-center flex flex-col justify-center items-center w-full max-w-[800px]">
-    <div class="text-[#1a1d30] lg:text-5xl text-4xl cursor-hover flex flex-col items-center justify-center bg-[#FAFAFA] rounded-full w-full max-w-[400px] lg:max-w-[500px] aspect-square overflow-hidden bg-linear-180 from-[#FAFAFA] to-100% to-[#464D77]">
-    <div class="absolute overflow-hidden w-full h-full">
-      <div class="absolute lg:w-[120%] w-[120%] lg:h-[400%] h-[100%] border border-white/10 rounded-full top-[45%] lg:top-[45%] -z-10 -left-[10%]" style="clip-path: inset(0 0 50% 0);"/>
+    <div class="absolute overflow-hidden w-full h-full pointer-events-none drop-shadow-[0px_-4px_8px_rgba(0,0,0,1)]">
+      <div class="absolute lg:w-[120%] w-[120%] lg:h-[400%] h-[100%] border border-white/10 rounded-full top-[45%] -z-10 -left-[10%]" style="clip-path: inset(0 0 50% 0);"/>
     </div>
-      <h1 class="text-[#1a1d30] drop-shadow-md drop-shadow-black/30  tracking-tighter">
+    <div class="text-dark-blue z-10 lg:text-5xl text-4xl cursor-hover flex flex-col items-center justify-center bg-off-white rounded-full w-full max-w-[400px] lg:max-w-[500px] aspect-square overflow-hidden bg-linear-180 from-off-white to-100% to-light-blue">
+      <h1 class="text-dark-blue drop-shadow-md drop-shadow-black/30  tracking-tighter">
         <b>Vitor Akiyama</b>
       </h1>
       <h2 class="font-bold text-xl sm:text-2xl drop-shadow-md drop-shadow-black/30">Software Developer</h2>
       <p class="text-lg sm:text-xl mt-4 drop-shadow-md drop-shadow-black/30">Based in Vancouver <span class="mx-1 relative top-0.5">·</span> Web Focused</p>
     </div>
-    <div class="py-4 flex gap-4 flex-col mt-8 text-[#FAFAFA] lg:text-lg items-center text-lg">
+    <div class="py-4 flex gap-4 flex-col mt-8 text-off-white lg:text-lg items-center text-lg">
       <p>
       I believe that technology has <b>limitless potential</b> to enrich and empower our lives.
       </p>
@@ -100,15 +143,17 @@ const skills: Skill[] = [
       I fulfill this commitment by building high-quality, seamless web applications with a <b>laser-sharp focus on usability.</b>
       </p>
       <div class="mt-4 w-[300px]">
-        <Button>
-          See My Projects ↓
-        </Button>
+        <a href="#projects">
+          <Button>
+            See My Projects ↓
+          </Button>
+        </a>
       </div>
     </div>
   </div>
-  <Section>
-    <h2 class="text-3xl text-[#FAFAFA] font-bold w-full tracking-tight">Skills</h2>
-    <div class="py-4 flex gap-2 flex-col w-full text-[#FAFAFA] text-lg">
+  <Section id="skills">
+    <h2 class="text-3xl text-off-white font-bold w-full tracking-tight">Skills</h2>
+    <div class="mt-4 flex gap-2 flex-col w-full text-off-white text-lg">
       <p>Mistakes happen, but they shouldn't reach the people using what I build.</p> 
       <p>I rely on tools and technologies that protect users by making correctness a priority.</p>
       <p>This means less bugs and more intentional user experiences.</p>
@@ -117,11 +162,12 @@ const skills: Skill[] = [
       {skills.map(skill => <Skill skill={skill}/>)}
     </div>
   </Section>
-  <Section>
-    <h2 class="text-3xl text-[#FAFAFA] font-bold w-full">
+  <Section id="projects">
+    <h2 class="text-3xl text-off-white font-bold w-full">
       Projects
     </h2>
-    <div class="bg-[#464D77] border rounded-lg border-white/10 w-full h-[300px]">
+    <div class="flex flex-col gap-4 mt-4">
+      {projects.map(project => <ProjectThumb project={project} />)}
     </div>
   </Section>
 </main>

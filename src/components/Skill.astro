@@ -10,7 +10,7 @@ const skill = props.skill as Skill;
 ---
 
 <a href={skill.href} target="_blank">
-  <div class="text-[#FAFAFA] flex flex-col items-center hover:-translate-y-0.5 transition-transform rotate-[0.000001deg] gap-2">
+  <div class="text-center text-off-white flex flex-col items-center hover:-translate-y-0.5 transition-transform rotate-[0.000001deg] gap-2">
     <Image class="w-15 rounded" src={skill.iconSrc} alt={skill.title + " logo"}/>
     <h3 class="text-bold text-lg">{skill.title}</h3>
   </div>

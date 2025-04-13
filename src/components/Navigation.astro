@@ -1,7 +1,12 @@
+---
+import NavItem from "./NavItem.astro";
+---
+
 <nav class="py-4">
-  <ul class="flex flex-row items-center justify-center gap-8 text-[#FAFAFA] text-xl">
-    <li class="font-bold">Home</li>
-    <li class="font-bold">About</li>
-    <li class="font-bold">Projects</li>
+  <ul class="flex flex-row items-center justify-center gap-8 text-off-white text-xl md:text-2xl">
+    <NavItem href="#skills" title="Skills" />
+    <NavItem href="#projects" title="Projects" />
+    <NavItem href="#about" title="About" />
+    <NavItem href="#contact" title="Contact" />
   </ul>
 </nav>

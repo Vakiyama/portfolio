@@ -6,3 +6,9 @@
   font-weight: 500;
   font-style: normal;
 }
+
+@theme {
+  --color-dark-blue: #1a1d30;
+  --color-light-blue: #464d77;
+  --color-off-white: #fafafa;
+}
