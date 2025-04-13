@@ -8,15 +8,13 @@ const { props } = Astro;
 
 const project: Project = props.project;
 
-console.log(props);
-
 
 ---
 
-<div class="p-4 project-card cursor-pointer relative rounded-xl overflow-hidden flex flex-col gap-4 transition-all duration-300 group hover:translate-y-[-5px] ease-out">
+<div class="p-4 project-card cursor-pointer relative rounded-xl overflow-hidden flex flex-col gap-4 transition-all duration-300 group hover:translate-y-[-5px] ease-out rotate-[0.000001deg]">
   <div class="thumbnail-wrapper rounded overflow-hidden">
     <Image 
-      class="w-full transition-transform duration-500 group-hover:scale-101" 
+      class="w-full transition-transform duration-300 group-hover:scale-101 rotate-[0.000001deg] ease-out" 
       src={project.thumbSrc} 
       alt={`Project thumbnail for ${project.title}`} 
     />
