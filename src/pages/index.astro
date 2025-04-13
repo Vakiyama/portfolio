@@ -53,17 +53,17 @@ const skills: Skill[] = [
 
 <Layout>
 <Navigation />
-<main class="p-4 rounded flex flex-col gap-10 items-center">
-  <div class="flex flex-col justify-center items-center w-full max-w-[800px]">
-    <div class="text-[#1a1d30] lg:text-3xl text-2xl cursor-hover flex flex-col items-center justify-center bg-[#FAFAFA] rounded-full w-[80%] max-w-[400px] aspect-square overflow-hidden bg-linear-180 from-[#FAFAFA] to-100% to-[#464D77]">
-    <div class="absolute lg:w-[120%] w-[120%] lg:h-[400%] h-[100%] border border-white/10 rounded-full top-[30%] -z-10" style="clip-path: inset(0 0 50% 0);"/>
-      <h1 class="text-[#1a1d30] drop-shadow-md drop-shadow-black/30">
+<main class="p-4 rounded flex flex-col gap-8 items-center mt-4">
+  <div class="text-center flex flex-col justify-center items-center w-full max-w-[800px]">
+    <div class="text-[#1a1d30] lg:text-5xl text-4xl cursor-hover flex flex-col items-center justify-center bg-[#FAFAFA] rounded-full w-[80%] max-w-[400px] lg:max-w-[500px] aspect-square overflow-hidden bg-linear-180 from-[#FAFAFA] to-100% to-[#464D77]">
+    <div class="absolute lg:w-[120%] w-[120%] lg:h-[400%] h-[100%] border border-white/10 rounded-full top-[22%] -z-10" style="clip-path: inset(0 0 50% 0);"/>
+      <h1 class="text-[#1a1d30] drop-shadow-md drop-shadow-black/30  tracking-tighter">
         <b>Vitor Akiyama</b>
       </h1>
       <h2 class="font-bold text-xl drop-shadow-md drop-shadow-black/30">Software Developer</h2>
-      <p class="text-base mt-4 drop-shadow-md drop-shadow-black/30">Based in Vancouver <span class="mx-1 relative top-0.5">·</span> Web Focused</p>
+      <p class="text-lg mt-4 drop-shadow-md drop-shadow-black/30">Based in Vancouver <span class="mx-1 relative top-0.5">·</span> Web Focused</p>
     </div>
-    <div class="py-4 flex gap-4 flex-col w-[90%] mt-4 text-[#FAFAFA] lg:text-lg">
+    <div class="py-4 flex gap-4 flex-col w-[90%] mt-8 text-[#FAFAFA] lg:text-lg items-center text-lg">
       <p>
       I believe that technology has <b>limitless potential</b> to enrich and empower our lives.
       </p>
@@ -73,7 +73,7 @@ const skills: Skill[] = [
       <p>
       I fulfill this commitment by building high-quality, seamless web applications with a <b>laser-sharp focus on usability.</b>
       </p>
-      <div class="mt-4">
+      <div class="mt-4 w-[300px]">
         <Button>
           See My Projects ↓
         </Button>
@@ -81,13 +81,13 @@ const skills: Skill[] = [
     </div>
   </div>
   <Section>
-    <h2 class="text-3xl text-[#FAFAFA] font-bold">Skills</h2>
+    <h2 class="text-3xl text-[#FAFAFA] font-bold w-[90%] tracking-tight">Skills</h2>
     <div class="py-4 flex gap-4 flex-col w-[90%] text-[#FAFAFA] lg:text-lg">
       <p>Mistakes happen, but they don’t have to reach the people using what I build.</p> 
       <p>I rely on tools and technologies that protect users by making correctness a priority.</p>
       <p>This means less bugs and more intentional user experiences.</p>
     </div>
-    <div class="grid grid-cols-3 gap-10 w-full mt-4">
+    <div class="grid grid-cols-3 gap-10 w-full mt-8">
       {skills.map(skill => <Skill skill={skill}/>)}
     </div>
   </Section>
