@@ -11,10 +11,10 @@ const project: Project = props.project;
 
 ---
 
-<div class="p-4 project-card cursor-pointer relative rounded-xl overflow-hidden flex flex-col gap-4 transition-all duration-300 group hover:translate-y-[-5px] ease-out rotate-[0.000001deg]">
-  <div class="thumbnail-wrapper rounded overflow-hidden">
+<div class="rotate-[0.000001deg] drop-shadow-black/30 drop-shadow-xl bg-light-blue border border-off-white/10 p-4 project-card cursor-pointer relative rounded-xl overflow-hidden flex flex-col gap-4 transition-all duration-300 group hover:translate-y-[-5px] ease-out">
+  <div class="thumbnail-wrapper rounded overflow-hidden drop-shadow-none">
     <Image 
-      class="w-full transition-transform duration-300 group-hover:scale-101 rotate-[0.000001deg] ease-out" 
+      class="drop-shadow-black/10 drop-shadow-xl w-full" 
       src={project.thumbSrc} 
       alt={`Project thumbnail for ${project.title}`} 
     />
@@ -25,13 +25,5 @@ const project: Project = props.project;
     <p class="text-off-white text-base">{project.description}</p>
   </div>
   
-  <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 </div>
-
-<style>
-  .project-card {
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  }
-</style>

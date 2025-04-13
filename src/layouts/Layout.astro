@@ -44,7 +44,7 @@ import Noise from "../components/Noise.astro";
           if (entry.isIntersecting) {
             skillItems.forEach((item, index) => {
               // @ts-ignore
-              item.style.transitionDelay = `${index * 100}ms`;
+              item.style.transitionDelay = `${index * 120}ms`;
               item.classList.add('animate-in');
             });
             
@@ -52,7 +52,7 @@ import Noise from "../components/Noise.astro";
           }
         });
       }, { 
-        threshold: 0.1 
+        threshold: 0.5 
       });
       
       observer.observe(skillSection);
