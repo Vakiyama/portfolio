@@ -3,27 +3,44 @@ import {
   Image
 } from "astro:assets";
 import type { Project } from "../pages/index.astro";
-
 const { props } = Astro;
-
 const project: Project = props.project;
-
 
 ---
 
-<div class="rotate-[0.000001deg] drop-shadow-black/30 drop-shadow-xl bg-light-blue border border-off-white/10 p-4 project-card cursor-pointer relative rounded-xl overflow-hidden flex flex-col gap-4 transition-all duration-300 group hover:translate-y-[-5px] ease-out">
-  <div class="thumbnail-wrapper rounded overflow-hidden drop-shadow-none">
-    <Image 
-      class="drop-shadow-black/10 drop-shadow-xl w-full" 
-      src={project.thumbSrc} 
-      alt={`Project thumbnail for ${project.title}`} 
-    />
+<a href=`/projects/${project.title}`>
+  <div class="rotate-[0.000001deg] drop-shadow-black/30 drop-shadow-xl bg-light-blue border border-off-white/10 p-4 project-card cursor-pointer relative rounded-xl overflow-hidden flex flex-col gap-4 transition-all duration-300 group hover:translate-y-[-5px] ease-out">
+    <div class="thumbnail-wrapper rounded overflow-hidden drop-shadow-none">
+      <Image 
+        class="drop-shadow-black/10 drop-shadow-xl w-full" 
+        src={project.thumbSrc} 
+        alt={`Project thumbnail for ${project.title}`} 
+      />
+    </div>
+    
+    <div class="project-info">
+      <h2 class="text-2xl font-medium tracking-tight text-off-white mb-1 mt-2">{project.title}</h2> 
+      <p class="text-off-white text-base">{project.description}</p>
+      
+      <div class="flex flex-wrap gap-2 mt-3 text-sm text-off-white/80">
+        <div class="flex items-center gap-1 bg-off-white/10 px-2 py-0.5 rounded">
+          <span>{project.type === "solo" ? "Solo Project" : project.type === "group" ? "Group Project" : "Client Work"}</span>
+        </div>
+        
+        <div class="flex items-center gap-1 bg-off-white/10 px-2 py-0.5 rounded">
+          <span>
+            {project.timeline.start}
+            {project.timeline.end ? ` - ${project.timeline.end}` : " - Present"}
+            {project.timeline.duration ? ` (${project.timeline.duration})` : ""}
+          </span>
+        </div>
+
+        <div class="flex items-center gap-1 bg-off-white/10 px-2 py-0.5 rounded">
+          {project.status.charAt(0).toLocaleUpperCase().concat(String(project.status).slice(1))}
+        </div>
+      </div>
+    </div>
+    
+    <div class="absolute inset-0 bg-gradient-to-b from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
   </div>
-  
-  <div class="project-info">
-    <h2 class="text-2xl font-medium tracking-tight text-off-white mb-1 mt-2">{project.title}</h2> 
-    <p class="text-off-white text-base">{project.description}</p>
-  </div>
-  
-  <div class="absolute inset-0 bg-gradient-to-b from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-</div>
+</a>

@@ -1,0 +1,159 @@
+---
+import { projects } from "../index.astro";
+import Navigation from "../../components/Navigation.astro";
+import Layout from "../../layouts/Layout.astro";
+import Section from "../../components/Section.astro"
+import { Image } from "astro:assets";
+
+export function getStaticPaths() {
+  return projects.map(proj => ({ params: { title: proj.title } }));
+}
+
+const { title } = Astro.params;
+const project = projects.find(proj => proj.title === title);
+
+if (!project) {
+  return Astro.redirect('/404');
+}
+---
+
+<Layout title={`${project.title} | Vitor Akiyama`}>
+  <Navigation />
+  
+  <main class="container mx-auto px-4 py-12 max-w-[800px] text-off-white">
+    <a href="/#projects" class="inline-flex items-center hover:text-blue-300 transition-colors mb-6">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+      </svg>
+      Back to Projects
+    </a>
+
+    <div class="bg-light-blue border border-off-white/10 rounded-xl overflow-hidden drop-shadow-black/30 drop-shadow-xl mb-10">
+      <div class="w-full aspect-video relative overflow-hidden">
+        <Image
+          src={project.thumbSrc}
+          alt={`${project.title} project screenshot`}
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+      </div>
+      
+      <div class="p-8">
+        <div class="flex flex-wrap gap-3 mb-4">
+          <div class="flex items-center gap-1 bg-off-white/10 px-3 py-1 rounded">
+            <span>{project.type === "solo" ? "Solo Project" : project.type === "group" ? "Group Project" : "Client Work"}</span>
+          </div>
+          
+          <div class="flex items-center gap-1 bg-off-white/10 px-3 py-1 rounded">
+            <span>
+              {project.timeline.start}
+              {project.timeline.end ? ` - ${project.timeline.end}` : " - Present"}
+              {project.timeline.duration ? ` (${project.timeline.duration})` : ""}
+            </span>
+          </div>
+          
+          <div class="flex items-center gap-1 bg-off-white/10 px-3 py-1 rounded">
+            {project.status.charAt(0).toLocaleUpperCase().concat(project.status.slice(1))}
+          </div>
+        </div>
+        
+        <h1 class="text-4xl font-medium tracking-tight text-off-white mb-2">{project.title}</h1>
+        <p class="text-off-white text-lg">{project.description}</p>
+        <p class="text-off-white text-sm mt-4">Role - {project.role}</p>
+        <div class="border-t border-off-white/10 pt-4 mt-4">
+          <h2 class="text-2xl font-medium tracking-tight text-off-white mb-2">Overview</h2>
+          
+          <div class="text-off-white space-y-4">
+            {project.overview.map(over => <p>{over}</p>)}
+            
+            {project.technologies.length > 0 &&
+            <Section>
+              <h3 class="w-full text-xl font-medium tracking-tight text-off-white mb-3">Technologies Used</h3>
+              <div class="flex flex-wrap gap-2 justify-start w-full">
+                {project.technologies.map(tech => <span class="bg-off-white/10 px-3 py-1 rounded">{tech}</span>)}
+              </div>
+            </Section>
+            }
+
+            {project.features.length > 0 &&
+            <Section>
+              <h3 class="text-xl font-medium tracking-tight text-off-white mb-3 w-full">Key Features</h3>
+              <ul class="list-disc list-inside space-y-2 w-full">
+                {project.features.map(feat => <li>{feat}</li>)}
+              </ul>
+            </Section>
+            }
+            
+            {project.challenges.length > 0 &&
+              <Section>
+                <h3 class="w-full text-xl font-medium tracking-tight text-off-white mb-3">Challenges & Solutions</h3>
+                <div class="w-full flex-row space-y-2">
+                {project.challenges.map(chal => <p>{chal}</p>)}
+                </div>
+              </Section>
+            }
+          </div>
+          
+          {(project.liveLink || project.sourceCode) && (
+            <div class="mt-10 flex flex-wrap gap-4">
+              {project.liveLink && (
+              <a target="_blank" href={project.liveLink} class="bg-off-white text-dark-blue hover:-translate-y-1 transition-all cursor-pointer px-6 py-3 rounded-lg flex items-center gap-2 rotate-[0.00001deg]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd" />
+                </svg>
+                View Live Project
+              </a>
+              )}
+              {project.sourceCode && (
+              <a target="_blank" href={project.sourceCode} class="bg-light-blue hover:bg-off-white/4 text-off-white px-6 py-3 rounded-lg transition-colors flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+                View Source Code
+              </a>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+    
+    <div class="mt-12 flex flex-row justify-between gap-8">
+      {
+        (() => {
+          const currentIndex = projects.findIndex(p => p.title === project.title);
+          const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
+          const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
+          
+          return (
+            <>
+              {prevProject && (
+                <a href={`/projects/${prevProject.title}`} class="w-full max-w-1/2 bg-light-blue border border-off-white/10 p-4 rounded-xl hover:bg-off-white/4 duration-300 ease-out flex items-center gap-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-off-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                  </svg>
+                  <div>
+                    <div class="text-off-white/60 text-sm">Previous Project</div>
+                    <div class="text-off-white">{prevProject.title}</div>
+                  </div>
+                </a>
+              )}
+              
+              {nextProject && (
+              <a href={`/projects/${nextProject.title}`} class="max-w-1/2 w-full bg-light-blue border border-off-white/10 p-4 rounded-xl hover:bg-off-white/4 duration-300 ease-out flex items-center justify-end gap-4 ml-auto">
+                  <div class="text-right">
+                    <div class="text-off-white/60 text-sm">Next Project</div>
+                    <div class="text-off-white">{nextProject.title}</div>
+                  </div>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-off-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              )}
+            </>
+          );
+        })()
+      }
+    </div>
+  </main>
+</Layout>

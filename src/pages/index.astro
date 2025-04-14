@@ -38,6 +38,20 @@ export type Project = {
   thumbSrc: ImageMetadata,
   title: string,
   description: string,
+  status: "active" | "complete" | "archived",
+  type: "solo" | "group" | "client",
+  timeline: {
+    start: string, 
+    end?: string,
+    duration?: string
+  },
+  role: string,
+  overview: string[],
+  technologies: string[],
+  features: string[],
+  challenges: string[],
+  liveLink?: string,
+  sourceCode?: string,
 }
 
 const skills: Skill[] = [
@@ -88,33 +102,98 @@ const skills: Skill[] = [
   },
 ]
 
-const projects: Project[] = [
+export const projects: Project[] = [
   {
     title: "Arkhet",
     description: "Build, test and validate product ideas in record time.",
+    role: "Founding Engineer",
     thumbSrc: Arkhet,
+    status: "active",
+    type: "client",
+    timeline: { start: "Sep 2024" },
+    overview: [
+    "Arkhet is a platform designed to let you explore and test ideas quickly and easily.",
+    "We do this by empowering people to create and innovate by designing wireframes and using generative AI to bring those wireframes to life.",
+    "These generated prototypes are designed to be shared, validated and improved.",
+    "Through this feedback, we aim to let you bring fragile, innovative ideas into mature products and solutions with real impact."
+    ],
+    technologies: ["TypeScript", "React", "Anthropic API", "Hono", "Tanstack Query", "tRPC", "Model Context Protocol", "PostgresSQL"],
+    features: [
+      "Explore ideas in a dedicated, low fidelity wireframing tool",
+      "Generate live, fully interactible prototypes in moments",
+      "Share generated prototypes with users and get actionable feedback"
+    ],
+    challenges: [
+      "Arkhet aims to bring a simple solution to a complex problem through AI.",
+      "In my pursuit to use generative AI to bring ideas to life, I've had to tackle the unique challenge of building non-deterministic systems that generate consistent value.",
+      "To help bring consistent value, I've employed technologies like the Model Context Protocol to standardize AI interaction with the world.",
+      "I've also used prompting techniques such as chain of thought prompting, the Q Star language model reasoning framework and self consistency.",
+      "AI and LLM systems are an emerging field gaining rapid traction in industry as we find innovative solutions to difficult problems.",
+      "I'm happy to be a part of this fast paced space and contribute to the future of intelligent, apaptive systems."
+    ],
+    liveLink: "https://arkhet.com"
   },
   {
     title: "Discover My Franchise",
     description: "Simplify franchise sales with a single, efficient candidate management system.",
     thumbSrc: Dmf,
+    role: "Frontend Developer",
+    status: "complete",
+    type: "client",
+    timeline: { start: "Feb 2023", end: "Aug 2024" },
+    overview: [
+    "Discover My Franchise is a platform designed to empower franchise owners in aquiring, managing and contacting potential franchise candidates.",
+    "Franchise owners gain access to an intuitive drag and drop interface where they can create a fully custom experience for their candidates.",
+    "Through this platform, franchise owners are able to find better candidates, communicate and collaborate with their sales teams and expand their franchises with efficiency.",
+    ],
+    technologies: ["React", "Redux", "TypeScript", "React Native", "Expo", "SQLite", "PostgresSQL", "Storybook", "MantineUI"],
+    features: [
+    "Drag and drop franchise candidate discovery portal",
+    "Franchise candidate management, filtering and instant messaging",
+    "Platform integrated, smart drip email and SMS notification system",
+    ],
+    challenges: []
   },
   {
     title: "Harmony",
     description: "Support your loved ones on an all in one, stress-free caretaking mobile app.",
     thumbSrc: Harmony,
+    role: "Full Stack Web Developer",
+    status: "complete",
+    type: "group",
+    timeline: { start: "September 2024", end: "Dec 2024" },
+    overview: ["Woops! This page is work in progress. Check back later for more details!"],
+    technologies: ["SolidJS", "Anthropic API", "TailwindCSS"],
+    features: [],
+    challenges: []
   },
   {
     title: "FairShare",
     description: "Share, track and split expenses with friends and family on a social finance platform.",
     thumbSrc: FairShare,
+    role: "Full Stack Web Developer",
+    status: "complete",
+    type: "client",
+    timeline: { start: "May 2024",  end: "Sep 2024" },
+    overview: ["Woops! This page is work in progress. Check back later for more details!"],
+    technologies: ["HTMX"],
+    features: [],
+    challenges: []
   },
   {
     title: "Uplink",
     description: "Converse and collaborate with an AI chat bot directly from your terminal.",
     thumbSrc: Uplink,
+    role: "Independent Developer",
+    status: "active",
+    type: "client",
+    timeline: { start: "February 2024" },
+    overview: ["Woops! This page is work in progress. Check back later for more details!"],
+    technologies: ["Gleam", "Gleam Effect", "Anthropic API"],
+    features: [],
+    challenges: []
   },
-]
+] 
 
 ---
 
@@ -206,7 +285,7 @@ const projects: Project[] = [
       
       <p class="text-base leading-relaxed">
       Some of my favorite technologies I use are 
-      <a target="_blank" href="https://neovim.io/"><span class="text-blue-300 hover:opacity-80">Neovim</span><a/>,
+      <a target="_blank" href="https://neovim.io/"><span class="text-blue-300 hover:opacity-80">Neovim</span></a>,
           <a target="_blank" href="https://nixos.org/"><span class="text-blue-300 hover:opacity-80">NixOS</span></a>
           (Linux) and split ergonomic keyboards. Currently rocking a 
           <a target="_blank" href="https://www.zsa.io/voyager"><span class="text-blue-300 hover:opacity-80">ZSA Voyager</span></a>
@@ -227,13 +306,20 @@ const projects: Project[] = [
         Want to get in touch?
       </p>
       <p>Find more of my projects on 
-        <a target="_blank" href="https://github.com/Vakiyama/"><span class="text-blue-300 hover:opacity-80">Github</span><a/>
+      <a target="_blank" href="https://github.com/Vakiyama/"><span class="text-blue-300 hover:opacity-80">Github</span></a>
         or connect with me on
-        <a target="_blank" href="https://linkedin.com/in/vitor-akiyama/"><span class="text-blue-300 hover:opacity-80">LinkedIn</span><a/>
+        <a target="_blank" href="https://linkedin.com/in/vitor-akiyama/"><span class="text-blue-300 hover:opacity-80">LinkedIn</span></a>
         . I'd love to hear from you!
       </p>
     </div>
-    <div class="py-16"/>
+  </Section>
+  <Section>
+    <a href={`/projects/${projects[0].title}`}>
+    <Button>
+      Browse My Projects →
+    </Button>
+    </a>
+    <div class="py-8"/>
   </Section>
 </main>
 <!-- <footer class="border-1 border-l-0 border-r-0 border-b-0 border-t-off-white/50 py-40 w-full drop-shadow-black drop-shadow-md bg-light-blue">
