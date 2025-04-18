@@ -117,7 +117,7 @@ export const projects: Project[] = [
     "These generated prototypes are designed to be shared, validated and improved.",
     "Through this feedback, we aim to let you bring fragile, innovative ideas into mature products and solutions with real impact."
     ],
-    technologies: ["TypeScript", "React", "Anthropic API", "Hono", "Tanstack Query", "tRPC", "Model Context Protocol", "PostgresSQL"],
+    technologies: ["TypeScript", "React", "Anthropic API", "Hono", "Tanstack Query", "tRPC", "Model Context Protocol", "PostgresSQL", "Kinde Auth"],
     features: [
       "Explore ideas in a dedicated, low fidelity wireframing tool",
       "Generate live, fully interactible prototypes in moments",
@@ -129,7 +129,7 @@ export const projects: Project[] = [
       "To help bring consistent value, I've employed technologies like the Model Context Protocol to standardize AI interaction with the world.",
       "I've also used prompting techniques such as chain of thought prompting, the Q Star language model reasoning framework and self consistency.",
       "AI and LLM systems are an emerging field gaining rapid traction in industry as we find innovative solutions to difficult problems.",
-      "I'm happy to be a part of this fast paced space and contribute to the future of intelligent, apaptive systems."
+      "I'm happy to be a part of this fast paced space and contribute to the future of intelligent, adaptive systems."
     ],
     liveLink: "https://arkhet.com"
   },
@@ -174,13 +174,19 @@ export const projects: Project[] = [
     "Caretaking teams have access to a shared space where recipient information is stored. They can setup calendar events, check availability and stay up to date with new events.",
     "The application is connected through an AI assistant that has the same abilities a caretaker does. This means creating and modifying data in the app at your request.",
     ],
-    technologies: ["SolidJS", "SolidStart", "Anthropic API", "TailwindCSS", "Effect-TS", "Drizzle", "LangGraph"],
+    technologies: ["SolidJS", "SolidStart", "Anthropic API", "TailwindCSS", "Effect-TS", "Drizzle", "LangGraph", "Kinde Auth"],
     features: [
     "A dedicated journal for tracking events, mood, general notes and eating habits for the recipient, shared with the caretaking team.",
     "A synchronized calendar that allows caretakers to stay synced up with events and availability, making sure no appointment gets missed.",
     "Voice to text and text to voice API's create a conversational assistant with access to all features in the app."
     ],
-    challenges: [],
+    challenges: [
+    "When giving our AI assistant the ability to modify and create events or tasks for our users, we needed to make sure that the AI assistant was correctly following user intent.",
+    "There was also a feedback issue, as caretakers may not be aware of when and why the AI system would take actions within the application and platform.",
+    "As I was working on these features, I noticed that we may have usability problems.",
+    "I proceeded to call this out to my team; we ran user testing sessions for the feature, had discussions about the results and worked on improving upon the feedback we gathered.",
+    "As a result, we were able to have many successful live demonstrations of the voice feature during a showcase that may have been confusing to our audience otherwise."
+    ],
     liveLink: "https://harmony-landing-page-omega.vercel.app/",
     sourceCode: "https://github.com/Vakiyama/harmony",
   },
@@ -195,10 +201,21 @@ export const projects: Project[] = [
     overview: [
     "FairShare is a social finance platform designed to help friends and family track group expenses with ease.",
     "By creating and inviting friends to groups, spenders can scan receipts to track a shared expense.",
+    "These expenses are also tracked automatically through our integration with the Plaid financial platform.",
+    "This means less time inputting data and more keeping track of your finances.",
     ],
-    technologies: ["HTMX", "Drizzle", "Plaid API", "TypeScript", "Express"],
-    features: [],
-    challenges: [],
+    technologies: ["HTMX", "React Native", "Expo", "Drizzle", "Plaid API", "TypeScript", "Express", "JSX", "Kinde Auth"],
+    features: [
+    "Fully integrated with your banking platform through Plaid, giving real time balance and transaction data in a group setting.",
+    "Fine grained bill splitting allows you to track expenses on a per member basis within a group.",
+    "Category based breakdown of expenses allows you to see how you and your group are spending over any timespan.",
+    ],
+    challenges: [
+    "This project used the HTMX library to power interactivity and give a mobile app like experience with minimal javascript.",
+    "This unique approach is highly different to how I've usually built applications.",
+    "As a team, we had to balance learning and operating within this unique application paradigm while also keeping up with progress in the time we had.",
+    "Even though it was more difficult than using a traditional framework such as React to power our interactivity, we learned a lot from the experience. A lot of the ways I write application today are influenced by what I learned in this project as a result.",
+  ],
     sourceCode: "https://github.com/JustArmaan/FairShare",
   },
   {
