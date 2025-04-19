@@ -227,11 +227,19 @@ export const projects: Project[] = [
     type: "solo",
     timeline: { start: "February 2024" },
     overview: [
-    "Uplink is a terminal user interface designed to let you converse with a chatbot without having to navigate to a terminal.",
+    "Uplink is a terminal user interface designed to let you converse with a chatbot without having to navigate to a browser.",
+    "You're able to choose between different models depending on your needs.",
+    "Uplink is an early project that will feature, in the future, web search and the ability to interact with your computer.",
     ],
-    technologies: ["Gleam", "Gleam Effect", "Anthropic API"],
+    technologies: ["Gleam", "Gleam Effect", "Anthropic API", "Teashop"],
     features: [],
-    challenges: [],
+    challenges: [
+    "Gleam is a language that can target either a javascript runtime or the erlang virtual machine.",
+    "Most of the ecosystem, however, has been written for elixir.",
+    "When writing this project, I found that there was little tooling for dealing with asynchronous javascript promises in a nice way, and uplink targets a javascript runtime.",
+    "To solve this, I co-authored a library named Effect (https://hex.pm/packages/effect) for Gleam.",
+    "This library allowed me to write uplink while dealing with promises while keeping my code maintainable and leveraging Gleam's powerful type system.",
+    ],
     sourceCode: "https://github.com/Vakiyama/uplink"
   },
 ] 
