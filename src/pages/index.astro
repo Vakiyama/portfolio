@@ -12,7 +12,7 @@ import ProjectThumb from "../components/ProjectThumb.astro";
   // skills
 import TypeScript from "../assets/typescript.png";
 import React from "../assets/React.png";
-import TRpc from "../assets/tRPC.png";
+import Rust from "../assets/rust.png";
 import Hono from "../assets/Hono.png";
 import Drizzle from "../assets/Drizzle.png";
 import Gleam from "../assets/gleam.png";
@@ -25,7 +25,6 @@ import Arkhet from "../assets/projects/arkhet.png";
 import Dmf from "../assets/projects/dmf.png";
 import FairShare from "../assets/projects/fairshare.png";
 import Harmony from "../assets/projects/Harmony.png";
-import Uplink from "../assets/projects/uplink.png"
 
 
 export type Skill = {
@@ -66,9 +65,14 @@ const skills: Skill[] = [
     href: "https://react.dev/"
   },
   {
-    title: "tRPC",
-    iconSrc: TRpc,
-    href: "https://trpc.io/"
+    title: "Gleam",
+    iconSrc: Gleam,
+    href: "https://gleam.run/",
+  },
+  {
+    title: "Rust",
+    iconSrc: Rust,
+    href: "https://rust-lang.org/"
   },
   {
     title: "Hono",
@@ -79,11 +83,6 @@ const skills: Skill[] = [
     title: "Drizzle",
     iconSrc: Drizzle,
     href: "https://orm.drizzle.team/"
-  },
-  {
-    title: "Gleam",
-    iconSrc: Gleam,
-    href: "https://gleam.run/",
   },
   {
     title: "Anthropic API",
@@ -106,33 +105,57 @@ export const projects: Project[] = [
   {
     title: "Arkhet",
     description: "Build, test and validate product ideas in record time.",
-    role: "Founding Engineer",
+    role: "Founding Engineer, Technical Lead (team of 3 engineers)",
     thumbSrc: Arkhet,
     status: "active",
     type: "client",
     timeline: { start: "Sep 2024" },
     overview: [
-    "Arkhet is a platform designed to let you explore and test ideas quickly and easily.",
-    "We do this by empowering people to create and innovate by designing wireframes and using generative AI to bring those wireframes to life.",
-    "These generated prototypes are designed to be shared, validated and improved.",
-    "Through this feedback, we aim to let you bring fragile, innovative ideas into mature products and solutions with real impact."
+    "Arkhet empowers teams to design wireframes and use generative AI to transform them into fully interactive prototypes.",
+    "Share prototypes to gather feedback and validate ideas, turning raw concepts into mature products quickly.",
     ],
-    technologies: ["TypeScript", "React", "Anthropic API", "Hono", "Tanstack Query", "tRPC", "Model Context Protocol", "PostgresSQL", "Kinde Auth"],
+    technologies: ["TypeScript", "React", "Gleam", "Lustre", "Anthropic API", "Playwright", "Hono", "AWS Bedrock", "PostgreSQL", "Kinde Auth"],
     features: [
-      "Explore ideas in a dedicated, low fidelity wireframing tool",
-      "Generate live, fully interactible prototypes in moments",
+      "Create user interfaces in an intuitive wireframing tool",
+      "Connect a design system to make your prototype look like your product",
+      "Generate fully interactive prototypes from your wireframes",
       "Share generated prototypes with users and get actionable feedback"
     ],
     challenges: [
-      "Arkhet aims to bring a simple solution to a complex problem through AI.",
-      "In my pursuit to use generative AI to bring ideas to life, I've had to tackle the unique challenge of building non-deterministic systems that generate consistent value.",
-      "To help bring consistent value, I've employed technologies like the Model Context Protocol to standardize AI interaction with the world.",
-      "I've also used prompting techniques such as chain of thought prompting, the Q Star language model reasoning framework and self consistency.",
-      "AI and LLM systems are an emerging field gaining rapid traction in industry as we find innovative solutions to difficult problems.",
-      "I'm happy to be a part of this fast paced space and contribute to the future of intelligent, adaptive systems."
+    `Built a custom internal AI toolkit for the Anthropic API through AWS Bedrock, providing flexible AI job creation while maintaining cost control and feature customization.`, 
+    `Led implementation of end-to-end type safety through Hono, with single-source-of-truth database types propagating to the frontend, reducing type errors and code duplication.`, 
+    `Redesigned the drag-and-drop canvas architecture in Gleam, improving performance by up to 10x, reducing technical bugs by nearly 95%, and leveraging Gleam's type system to eliminate all canvas-related runtime crashes.`, 
+    `Introduced end-to-end testing to address regression bugs, catching bugs before production and freeing up ~50% more dev time for features.`, 
     ],
-    liveLink: "https://arkhet.com"
+    liveLink: "https://arkhet.app"
   },
+
+    // `~6 months into development, our team noticed an increase in regression bugs. Features in one place would break things in another.
+    // I lead an effort to introduce end to end testing to critical parts of our application, as well as introduce tests as a requirement in future features.
+    // As a result, our app became far more robust, and our team spent focusing on features and growing our application instead of fighting bugs in production.`,
+    // `As our drag and drop canvas grew in complexity, we noticed issues with correctness, performance and maintainability that were slowing down development.
+    // These problems continued to plague our users despite attempts to address problems as they were identified.
+    // I created a quick prototype of our canvas built with a new architecture and pitched it to the team as a solution to the root cause of our problems.
+    // Having prepared my pitch before the meeting, the team immediately saw the value in a novel approach and greenlit an incremental migration.
+    // In the course of two weeks, a months long focus on bugs and performance in our canvas was resolved. Our discussions moved to other features in our application
+    // that would grow our feature set and deliver more value to users.
+    // `New foundation models, protocols and standards quickly derail inflexible, long term technical planning.`,
+    // `It is easy to fall behind on new API capabilities, agentic AI practices and other competing AI tools.`,
+    // `To keep up, I've implemented a strategy that allows our technical conditions to suit our business needs.`,
+    // `When focusing on validation and feedback, we've built with ready made, easy to deploy developer kits and libraries. This gives up control
+    // over large parts of implementation for the benefit of speed of development and iteration.`,
+    // `This approach was ideal when we had no live application or users, allowing us to move fast and break things.`,
+    // `When we launched and began supporting users, the technical picture had to change to meet needs related to stability and costs.`,
+    // `Now, a more custom AI solution is being developed which gives us low level, direct to API control over implementation. This lets us meet changing API requirements
+    // on our own terms, control our costs and build a solution exactly tailored to our business and technical requirements.`,
+    // `As a result, we've saved on costs, improved AI job performance and created the internal tooling and observability an AI company needs to make decisions about what
+    // to build and what problems to solve.`,
+    // "Arkhet aims to bring a simple solution to a complex problem through AI.",
+    // "In my pursuit to use generative AI to bring ideas to life, I've had to tackle the unique challenge of building non-deterministic systems that generate consistent value.",
+    // "To help bring consistent value, I've employed technologies like the Model Context Protocol to standardize AI interaction with the world.",
+    // "I've also used prompting techniques such as chain of thought prompting, the Q Star language model reasoning framework and self consistency.",
+    // "AI and LLM systems are an emerging field gaining rapid traction in industry as we find innovative solutions to difficult problems.",
+    // "I'm happy to be a part of this fast paced space and contribute to the future of intelligent, adaptive systems."
   {
     title: "Discover My Franchise",
     description: "Simplify franchise sales with a single, efficient candidate management system.",
@@ -146,7 +169,7 @@ export const projects: Project[] = [
     "Franchise owners gain access to an intuitive drag and drop interface where they can create a fully custom experience for their candidates.",
     "Through this platform, franchise owners are able to find better candidates, communicate and collaborate with their sales teams and expand their franchises with efficiency.",
     ],
-    technologies: ["React", "Redux", "TypeScript", "React Native", "Expo", "SQLite", "PostgresSQL", "Storybook", "MantineUI"],
+    technologies: ["React", "Redux", "TypeScript", "React Native", "Expo", "SQLite", "PostgreSQL", "Storybook", "MantineUI"],
     features: [
     "Drag and drop franchise candidate discovery portal",
     "Franchise candidate management, filtering and instant messaging",
@@ -218,30 +241,30 @@ export const projects: Project[] = [
   ],
     sourceCode: "https://github.com/JustArmaan/FairShare",
   },
-  {
-    title: "Uplink",
-    description: "Converse and collaborate with an AI chat bot directly from your terminal.",
-    thumbSrc: Uplink,
-    role: "Independent Developer",
-    status: "active",
-    type: "solo",
-    timeline: { start: "February 2024" },
-    overview: [
-    "Uplink is a terminal user interface designed to let you converse with a chatbot without having to navigate to a browser.",
-    "You're able to choose between different models depending on your needs.",
-    "Uplink is an early project that will feature, in the future, web search and the ability to interact with your computer.",
-    ],
-    technologies: ["Gleam", "Gleam Effect", "Anthropic API", "Teashop"],
-    features: [],
-    challenges: [
-    "Gleam is a language that can target either a javascript runtime or the erlang virtual machine.",
-    "Most of the ecosystem, however, has been written for elixir.",
-    "When writing this project, I found that there was little tooling for dealing with asynchronous javascript promises in a nice way, and uplink targets a javascript runtime.",
-    "To solve this, I co-authored a library named Effect (https://hex.pm/packages/effect) for Gleam.",
-    "This library allowed me to write uplink while dealing with promises while keeping my code maintainable and leveraging Gleam's powerful type system.",
-    ],
-    sourceCode: "https://github.com/Vakiyama/uplink"
-  },
+  // {
+  //   title: "Uplink",
+  //   description: "Converse and collaborate with an AI chat bot directly from your terminal.",
+  //   thumbSrc: Uplink,
+  //   role: "Independent Developer",
+  //   status: "active",
+  //   type: "solo",
+  //   timeline: { start: "February 2024" },
+  //   overview: [
+  //   "Uplink is a terminal user interface designed to let you converse with a chatbot without having to navigate to a browser.",
+  //   "You're able to choose between different models depending on your needs.",
+  //   "Uplink is an early project that will feature, in the future, web search and the ability to interact with your computer.",
+  //   ],
+  //   technologies: ["Gleam", "Gleam Effect", "Anthropic API", "Teashop"],
+  //   features: [],
+  //   challenges: [
+  //   "Gleam is a language that can target either a javascript runtime or the erlang virtual machine.",
+  //   "Most of the ecosystem, however, has been written for elixir.",
+  //   "When writing this project, I found that there was little tooling for dealing with asynchronous javascript promises in a nice way, and uplink targets a javascript runtime.",
+  //   "To solve this, I co-authored a library named Effect (https://hex.pm/packages/effect) for Gleam.",
+  //   "This library allowed me to write uplink while dealing with promises while keeping my code maintainable and leveraging Gleam's powerful type system.",
+  //   ],
+  //   sourceCode: "https://github.com/Vakiyama/uplink"
+  // },
 ] 
 
 ---
